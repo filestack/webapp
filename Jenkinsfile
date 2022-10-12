@@ -17,7 +17,7 @@ pipeline {
 		    steps {
 	        sh 'rm trufflehog || true'
 		sh 'docker pull gesellix/trufflehog'
-		sh 'docker run -t gesellix/trufflehog --json https://github.com/devopssecure/webapp.git > trufflehog'
+		sh 'docker run -t gesellix/trufflehog --json https://github.com/filestack/webapp.git > trufflehog'
 		sh 'cat trufflehog'
 	    }
 	    }
@@ -27,7 +27,7 @@ stage ('Upload Reports to Defect Dojo') {
 			sh 'pip install requests'
 			sh 'wget https://raw.githubusercontent.com/filestack/webapp/master/upload-results.py'
 			sh 'chmod +x upload-results.py'
-			sh 'python upload-results.py --host http://localhost:8000/dashboard --api_key b4e1b9a5f80cc8d96363b515f039170c2aa222db --engagement_id 1 --result_file trufflehog --username admin --scanner "SSL Labs Scan"'
+			sh 'python upload-results.py --host http://localhost:8000 --api_key b4e1b9a5f80cc8d96363b515f039170c2aa222db --engagement_id 1 --result_file trufflehog --username admin --scanner "SSL Labs Scan"'
 			
 		    }
 	    }
