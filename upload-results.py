@@ -5,7 +5,7 @@ import os
 import requests
 
 def upload_results(host, user, api_key, scanner, result_file, engagement_id, verify=False): # set verify to False if ssl cert is self-signed
-	API_URL = "http://"+host+"/api/v1"
+	API_URL = "http://localhost:8000/api/v2"
         IMPORT_SCAN_URL = API_URL+ "/importscan/"
         AUTH_TOKEN = "ApiKey " + user + ":" + api_key
 
@@ -14,7 +14,7 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
 	files = dict()
 
 	# Prepare headers
-	# headers = {'Authorization': 'ApiKey dojo:3e24a3ee5af0305af20a5e6224052de3ed2f6859'}
+	# headers = {'Authorization': 'Token b4e1b9a5f80cc8d96363b515f039170c2aa222db'}
 	headers['Authorization'] = AUTH_TOKEN
 	print headers
 
@@ -25,8 +25,8 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
 	#   "verified": False,
 	#   "tags": "",
 	#   "active": False,
-	#   "engagement": "/api/v1/engagements/2/",
-	#   "lead":"/api/v1/users/1/",
+	#   "engagement": "/api/v2/engagements/1/",
+	#   "lead":"/api/v2/users/1/",
 	#   "scan_type": "Bandit Scan"
 	# }
 	json['minimum_severity'] = "Low"
@@ -34,8 +34,8 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
 	json['verified'] = False
 	json['tags'] = ""
 	json['active'] = False
-	json['engagement'] = "/api/v1/engagements/"+ engagement_id + "/"
-	json['lead'] ="/api/v1/users/"+ "1" + "/"
+	json['engagement'] = "/api/v2/engagements/"+ engagement_id + "/"
+	json['lead'] ="/api/v2/users/"+ "1" + "/"
 	json['scan_type'] = scanner
 	print json
 
