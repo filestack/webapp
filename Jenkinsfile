@@ -12,6 +12,17 @@ pipeline {
                 ''' 
             }
         }
+	
+	    
+	    stage ('Check-Git-Secrets') {
+		    steps {
+	        sh 'rm trufflehog || true'
+		sh 'docker pull gesellix/trufflehog'
+		sh 'docker run -t gesellix/trufflehog --json https://github.com/filestack/webapp.git > trufflehog'
+		sh 'cat trufflehog'
+	    }
+	    }
+	    
 	    stage ('Build') {
             steps {
                 sh 'mvn clean package'
@@ -26,18 +37,9 @@ pipeline {
 		    }
 	    }
 	    
-	    stage ('Check-Git-Secrets') {
-		    steps {
-	        sh 'rm trufflehog || true'
-		sh 'docker pull gesellix/trufflehog'
-		sh 'docker run -t gesellix/trufflehog --json https://github.com/filestack/webapp.git > trufflehog'
-		sh 'cat trufflehog'
-	    }
-	    }
-	    
 	 
 	    
-stage ('Upload Reports to Defect Dojo') {
+	stage ('Upload Reports to Defect Dojo') {
 		    steps {
 			sh 'pip install requests'
 			sh 'wget https://raw.githubusercontent.com/filestack/webapp/master/upload-results.py'
