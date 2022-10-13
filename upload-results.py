@@ -39,7 +39,7 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
 	json['engagement'] = "/api/v2/engagements/"+ engagement_id + "/"
 	json['lead'] ="/api/v2/users/"+ "1" + "/"
 	json['scan_type'] = scanner
-	print json
+	print (json)
 
 	# Prepare file data to send to API
 	files['file'] = open(result_file)
