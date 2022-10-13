@@ -25,7 +25,7 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id 4, v
 	#   "verified": False,
 	#   "tags": "",
 	#   "active": False,
-	#   "engagement": "/api/v2/engagements/1/",
+	#   "engagement": "/api/v2/engagements/4/",
 	#   "lead":"/api/v2/users/1/",
 	#   "scan_type": "Bandit Scan"
 	# }
