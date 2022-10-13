@@ -29,14 +29,7 @@ pipeline {
             }
         }   
 
-    stage ('SSL Checks') {
-		    steps {
-			sh 'pip install sslyze==1.4.2'
-			sh 'python -m sslyze --regular 127.0.0.1:8080 --json_out sslyze-output.json'
-			sh 'cat sslyze-output.json'
-		    }
-	    }
-	    
+ 
 	 
 	    
 	stage ('Upload Reports to Defect Dojo') {
