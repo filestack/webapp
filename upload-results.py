@@ -44,15 +44,13 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
 	# Prepare file data to send to API
 	files['file'] = open(result_file)
 
-	# Make request to API
-	response = requests.post(IMPORT_SCAN_URL, headers=headers, files=files, data=json, verify=verify)
-     # print r.request.body
-     # print r.request.headers
-     # print r.status_code
-     # print r.text
-        #return	response.status_code
-	#return response.status_code
-
+    # Make a request to API
+    response = requests.post(IMPORT_SCAN_URL, headers=headers, files=files, data=json, verify=verify)
+    # print r.request.body
+    # print r.request.headers
+    # print r.status_code
+    # print r.text
+    return response.status_code
 
 if __name__ == "__main__":
         parser = argparse.ArgumentParser(description='CI/CD integration for DefectDojo')
@@ -76,11 +74,13 @@ if __name__ == "__main__":
         engagement_id = args["engagement_id"]
         build_id = args["build_id"]
 
-	upload_results(self, host, user, api_key, scanner, result_file, engagement_id, verify=False): # set verify to False if ssl cert is self-signed
+	# upload_results(self, host, user, api_key, scanner, result_file, engagement_id, verify=False): # set verify to False if ssl cert is self-signed
+	# result = upload_results(host, user, api_key, scanner, result_file, engagement_id)
 	result = upload_results(host, user, api_key, scanner, result_file, engagement_id)
 
-	if result == 201 :
-		print "Successfully uploaded the results to Defect Dojo"
-	else:
-		print "Something went wrong, please debug " + str(result)
+	 if result == 201 :
+		print ("Successfully uploaded the results to Defect Dojo")
+    	else:
+		print ("Something went wrong, please debug " + str(result))
+
 
