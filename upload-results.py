@@ -4,9 +4,9 @@ import json
 import os
 import requests
 
-def upload_results(host, user, api_key, scanner, result_file, engagement_id, verify=False): # set verify to False if ssl cert is self-signed
-	API_URL = "http://localhost:8000/api/v2"
-        #IMPORT_SCAN_URL = API_URL+ "/importscan/"
+def upload_results(host, user, api_key, scanner, result_file, engagement_id 1, verify=False): # set verify to False if ssl cert is self-signed
+	API_URL = "http://"+host+"/api/v1"
+        IMPORT_SCAN_URL = API_URL+ "/importscan/"
         AUTH_TOKEN = "ApiKey " + user + ":" + api_key
 
 	headers = dict()
@@ -14,7 +14,7 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
 	files = dict()
 
 	# Prepare headers
-	# headers = {'Authorization': 'ApiKey dojo:b4e1b9a5f80cc8d96363b515f039170c2aa222db'}
+	# headers = {'Authorization': 'ApiKey b4e1b9a5f80cc8d96363b515f039170c2aa222db'}
 	headers['Authorization'] = AUTH_TOKEN
 	print headers
 
