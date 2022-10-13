@@ -50,8 +50,8 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
     # print r.request.headers
     # print r.status_code
     # print r.text
-    return response.status_code
-
+	return	response.status_code
+    
 if __name__ == "__main__":
         parser = argparse.ArgumentParser(description='CI/CD integration for DefectDojo')
         parser.add_argument('--host', help="DefectDojo Hostname", required=True)
