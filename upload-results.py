@@ -75,11 +75,11 @@ if __name__ == "__main__":
         build_id = args["build_id"]
 
 	# upload_results(self, host, user, api_key, scanner, result_file, engagement_id, verify=False): # set verify to False if ssl cert is self-signed
-		result = upload_results(host, user, api_key, scanner, result_file, engagement_id )
-		
-	 if result == 201 :
+	result = upload_results(host, user, api_key, scanner, result_file, engagement_id)
+	
+	if result == 201 :
 		print ("Successfully uploaded the results to Defect Dojo")
-    	else:
+	else:
 		print ("Something went wrong, please debug " + str(result))
 
 
