@@ -26,7 +26,7 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
     #   "tags": "",
     #   "active": False,
     #   "engagement": "/api/v2/engagements/1/",
-    #   "lead":"/api/v1/users/1/",
+    #   "lead":"/api/v2/users/1/",
     #   "scan_type": "Bandit Scan"
     # }
     json['minimum_severity'] = "Low"
@@ -34,8 +34,8 @@ def upload_results(host, user, api_key, scanner, result_file, engagement_id, ver
     json['verified'] = False
     json['tags'] = ""
     json['active'] = False
-    json['engagement'] = "/api/v1/engagements/"+ engagement_id + "/"
-    json['lead'] ="/api/v1/users/"+ "1" + "/"
+    json['engagement'] = "/api/v2/engagements/"+ engagement_id + "/"
+    json['lead'] ="/api/v2/users/"+ "1" + "/"
     json['scan_type'] = scanner
     print(json)
 
